@@ -21,7 +21,7 @@ def save_captions_to_file(captions, filename='captions.txt'):
     if captions:
         with open('down/' + filename, 'w', encoding='utf-8') as file:
             for caption in captions:
-                cleaned_text = remove_timestamps(caption['text'])
+                cleaned_text = caption['text'] + ' '
                 file.write(f"{cleaned_text}")
         print(f"Captions (without timestamps) saved to {filename}")
     else:
