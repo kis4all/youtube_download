@@ -17,7 +17,6 @@ def download_youtube_audio(video_url, output_path):
     # 다운로드된 오디오 파일 경로
     title = yt.title
     title = re.sub(r'[\\/:*?<>|]', '', title)
-    title = re.sub(r'\s', '_', title)
     downloaded_audio_path = f"{output_path}/{title}.mp4"
 
     # mp4 파일을 mp3로 변환
@@ -31,7 +30,7 @@ def download_youtube_audio(video_url, output_path):
     return mp3_path
 
 # 사용 예시
-video_url = "https://www.youtube.com/watch?v=Dbj1GNT3Mjk"
+video_url = "https://www.youtube.com/watch?v=VHBIfmxkHh4"
 output_path = "down"
 
 downloaded_mp3_path = download_youtube_audio(video_url, output_path)
