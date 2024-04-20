@@ -1,8 +1,10 @@
 file_name = 'down/West votes against rest of world in UN Human Rights Council.txt'
 
+import torch
+device = "cuda:0" if torch.cuda.is_available() else "cpu"
 
 import nltk
-#nltk.download('punkt')  # Download the necessary NLTK data
+nltk.download('punkt')  # Download the necessary NLTK data
 
 import time
 start_time = time.time()
@@ -12,6 +14,7 @@ from transformers import AutoModelForSeq2SeqLM, AutoTokenizer
 
 tokenizer = AutoTokenizer.from_pretrained("facebook/nllb-200-distilled-600M")
 model = AutoModelForSeq2SeqLM.from_pretrained("facebook/nllb-200-distilled-600M")
+modle = model.to(device)
 
 # Open the text file
 with open(file_name, 'r') as file:
@@ -27,7 +30,8 @@ i = 0
 
 for sentence in sentences:
     article = sentence.strip()
-    inputs = tokenizer(article, return_tensors="pt")
+    #inputs = tokenizer(article, return_tensors="pt")
+    inputs = tokenizer(article, return_tensors="pt").to(device)
     translated_tokens = model.generate(
         **inputs, forced_bos_token_id=tokenizer.lang_code_to_id["kor_Hang"], max_length=30)
     
