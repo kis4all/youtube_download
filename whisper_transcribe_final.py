@@ -6,7 +6,7 @@ import time
 start_time = time.time()
 
 print("Mp3 is being transcribed to text file. It may take a while.")
-model = whisper.load_model("tiny.en")
+model = whisper.load_model("medium.en")
 result = model.transcribe(file_name, fp16 = False)
 
 file_name_txt = file_name.replace("down/", "").replace(".mp3",".txt")
