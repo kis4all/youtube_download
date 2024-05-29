@@ -32,6 +32,7 @@ video_url = "https://www.youtube.com/watch?v=Dbj1GNT3Mjk"
 
 # Get auto-generated captions
 captions = get_auto_generated_captions(video_url)
+#
 
 # Save captions without timestamps to a file
 yt = YouTube(video_url)
