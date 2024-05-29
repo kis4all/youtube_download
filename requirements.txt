@@ -1,0 +1,5 @@
+pytube
+pydub
+openai-whisper
+nltk
+transformers
